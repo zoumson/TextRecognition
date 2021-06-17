@@ -1,0 +1,5 @@
+/home/tutk/zouma/learning/project/TextRecognition/Chapter_10/build/CMakeFiles/rebuild_cache.dir
+/home/tutk/zouma/learning/project/TextRecognition/Chapter_10/build/CMakeFiles/segmentOcrHigh.dir
+/home/tutk/zouma/learning/project/TextRecognition/Chapter_10/build/CMakeFiles/segmentOcr.dir
+/home/tutk/zouma/learning/project/TextRecognition/Chapter_10/build/CMakeFiles/edit_cache.dir
+/home/tutk/zouma/learning/project/TextRecognition/Chapter_10/build/CMakeFiles/segment.dir
