@@ -1,13 +1,13 @@
-cmake_minimum_required (VERSION 3.0) 
+cmake_minimum_required(VERSION 2.8.9)
 
-PROJECT(text)
+#set the project name
+project (blob)
 
 #Set the compiler
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_BUILD_TYPE Release)
 set( EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-#set( LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
-
+set( LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
 #Set ccache (for speeding up)
 find_program(CCACHE_FOUND ccache) 
@@ -17,13 +17,14 @@ if(CCACHE_FOUND)
 endif(CCACHE_FOUND) 
 set (CMAKE_CXX_FLAGS "-DPCL_ONLY_CORE_POINT_TYPES=ON -DNO_EXPLICIT_INSTANTIATIONS") 
 
+#Conan
 IF(EXISTS ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
     include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
     conan_basic_setup()
 ENDIF()
-#set(TESSDATA_PREFIX "/usr/share/tesseract-ocr/tessdata")
-# Requires OpenCV v4.0 or later
-FIND_PACKAGE( OpenCV 4 REQUIRED )
+
+############### Dependencies #######################
+find_package( OpenCV REQUIRED )
 
 find_package( PkgConfig REQUIRED)
 
@@ -35,17 +36,12 @@ include_directories( ${TESSERACT_INCLUDE_DIRS} )
 
 include_directories( ${LEPTONICA_INCLUDE_DIRS} )
 
-link_directories( ${TESSERACT_LIBRARY_DIRS} )
-
-link_directories( ${LEPTONICA_LIBRARY_DIRS} )
-
 include_directories( ${OpenCV_INCLUDE_DIRS} )
+############### My Files #########################
 
-ADD_EXECUTABLE( segment ${PROJECT_SOURCE_DIR}/src/segment.cpp )
-TARGET_LINK_LIBRARIES( segment  ${CONAN_LIBS} ${OpenCV_LIBS})
+#Bring the headers
+include_directories(${PROJECT_SOURCE_DIR}/include)
 
-ADD_EXECUTABLE( segmentOcr ${PROJECT_SOURCE_DIR}/src/segmentOcr.cpp )
-TARGET_LINK_LIBRARIES( segmentOcr  ${CONAN_LIBS} ${OpenCV_LIBS} ${TESSERACT_LIBRARIES} ${LEPTONICA_LIBRARIES})
-
-ADD_EXECUTABLE( segmentOcrHigh ${PROJECT_SOURCE_DIR}/src/segmentOcrHigh.cpp )
-TARGET_LINK_LIBRARIES( segmentOcrHigh  ${CONAN_LIBS} ${OpenCV_LIBS} ${TESSERACT_LIBRARIES} ${LEPTONICA_LIBRARIES})
+#Bring the source files
+add_subdirectory(${PROJECT_SOURCE_DIR}/src/lib)
+add_subdirectory(${PROJECT_SOURCE_DIR}/src/demo)
