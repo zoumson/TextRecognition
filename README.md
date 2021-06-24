@@ -128,23 +128,37 @@ This is an example of how to list things you need to use the software and how to
 git clone https://github.com/zoumson/OpencvInstall.git     \
 && cd OpencvInstall && chmod +x install.sh && ./install.sh
  ```
- *keywords*
+ *keywords* 
+ 
+[2/](https://docs.opencv.org/2.4/modules/imgproc/doc/miscellaneous_transformations.html?highlight=threshold#threshold/)
+[3/](https://learnopencv.com/otsu-thresholding-with-opencv/)
+[5/](https://docs.opencv.org/master/d4/d86/group__imgproc__filter.html#gac342a1bb6eabf6f55c803b09268e36dc)
+[6/](https://docs.opencv.org/master/d4/d86/group__imgproc__filter.html/)
+[8/](https://stackoverflow.com/questions/11182203/helping-using-the-dilate-function-opencv/)
+[10/](https://stackoverflow.com/questions/8449378/finding-contours-in-opencv/)
+[11/](https://stackoverflow.com/questions/8830619/difference-between-cv-retr-list-cv-retr-tree-cv-retr-external/)
+[12/](https://docs.opencv.org/3.4/db/dd6/classcv_1_1RotatedRect.html/)
+[13/](https://docs.opencv.org/3.4/d3/dc0/group__imgproc__shape.html#ga3d476a3417130ae5154aea421ca7ead9/)
+
+
 ```
-1. cv::dnn::Net
-2. cv::dnn::blobFromImage
-3. cv::Mat
-3. cv::rectangle
-4. cv::Point
-5. cv::Scalar
-6. cv::CommandLineParser
-7. cv::String
-8. cv::VideoCapture
-9. cv::waitKey
-10. cv::putText
-11. cv::imshow
-12. cv::imwrite
-13. cv::FONT_HERSHEY_SIMPLEX
-14. cv::LINE_AA
+1. cv::cvtColor
+2. cv::threshold
+3. THRESH_OTSU
+4. cv::countNonZero
+5. cv::getStructuringElement
+6. cv::MORPH_CROSS
+7. cv::Size
+8. cv::dilate
+9. cv::Point
+10. cv::findContours
+11. cv::RETR_EXTERNAL
+12. cv::RotatedRect
+13. cv::minAreaRect	
+14. cv::getRotationMatrix2D
+15. cv::warpAffine
+16. cv::getRectSubPix
+17. cv::BORDER_CONSTANT
 ```
 * c++ 
 [1/](https://stackoverflow.com/questions/6687107/difference-between-stdpair-and-stdtuple-with-only-two-members/)
