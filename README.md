@@ -12,8 +12,8 @@
 [![Stack Overflow][stackoverflow-shield]][stackoverflow.com/users/11175375/adam]
 [![Leetcode][leetcode-shield]][eetcode.com/Hard_Code/]
 -->
-## Basic opencv image manipulation
-
+## Identify Gender and Age From Face Using DNN
+![d](https://user-images.githubusercontent.com/38358621/123162190-e5324700-d4a2-11eb-9b61-316e6c7a17f5.png)
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
@@ -51,11 +51,13 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
-
-Read, show, clone image in opencv
-
+Age and gender estimation based on face images plays an important role in a wide range of scenarios, including 
+* security and defense applications, 
+* * border control, 
+* human-machine interaction in ambient intelligence applications, and 
+* recognition based on soft biometric information
+In this project a pre-trained deep neural network model is used to first detect faces from a given image. The face detected is then used for gender and age estimation. 
 <!--Built with -->
 ### Built With
 
@@ -63,7 +65,6 @@ Read, show, clone image in opencv
 
 * [opencv](https://opencv.org/)
 * [cmake](https://cmake.org/)
-* [gnu](https://www.gnu.org/)
 
 <br>
 
@@ -71,23 +72,33 @@ Read, show, clone image in opencv
 
 ### Folders
 
-* [include/](include/): c++ header files.
+* [resource/](resource/): images.
 * [src/](src/): c++ definitions.
 
 
 ### Entire Files Structure 
 
-
 ```
 .
 ├── CMakeLists.txt
-├── include
 ├── README.md
-├── ressource
-│   └── happy.jpeg
+├── resource
+│   ├── image
+│   │   └── christiano.png
+│   ├── model
+│   │   ├── age_net.caffemodel
+│   │   ├── gender_net.caffemodel
+│   │   └── opencv_face_detector_uint8.pb
+│   ├── proto
+│   │   ├── age_deploy.prototxt
+│   │   ├── gender_deploy.prototxt
+│   │   └── opencv_face_detector.pbtxt
+│   └── video
+│       └── video.mp4
 └── src
-    └── imageBasics.cpp
+    └── demo.cpp
 
+6 directories, 11 files
 
 
 ```
@@ -96,7 +107,7 @@ Read, show, clone image in opencv
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is a sample code of how you may use  the opencv basic libs.
+This is a sample code of how you may use  the opencv dnn to detect face, gender and age.
 To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
@@ -106,114 +117,86 @@ This is an example of how to list things you need to use the software and how to
   ```sh
   sudo apt-get install cmake
   ```
-* [Install](https://askubuntu.com/questions/342202/failed-to-load-module-canberra-gtk-module-but-already-installed) `gtk` and `gtk3` module to access `canberra-gtk-module` used by `opencv imshow`
- 
-  ```sh
-  sudo apt install libcanberra-gtk-module libcanberra-gtk3-module
-  ```
- * Install first `opencv4` cpp libraries 
 
+ * opencv4
 
+ *Installation*
  ```sh
- sudo apt-get update
- ```
- ```sh
- sudo apt-get upgrade
- ```
- 
- ```sh
- sudo apt-get install build-essential cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+ sudo su
  ```
  ```sh
- sudo apt-get install  python3-numpy libtbb2 libtbb-dev
+git clone https://github.com/zoumson/OpencvInstall.git     \
+&& cd OpencvInstall && chmod +x install.sh && ./install.sh
  ```
- ```sh
- sudo apt-get install libjpeg-dev libpng-dev libtiff5-dev libdc1394-22-dev libeigen3-dev libtheora-dev libvorbis-dev libxvidcore-dev libx264-dev sphinx-common       libtbb-dev yasm libfaac-dev libopencore-amrnb-dev libopencore-amrwb-dev libopenexr-dev libgstreamer-plugins-base1.0-dev libavutil-dev libavfilter-dev             libavresample-dev
- ```
- 
- ```sh
- cd /opt
- ```
- ```sh
- git clone https://github.com/Itseez/opencv.git
- ```
- 
- ```sh
- git clone https://github.com/Itseez/opencv_contrib.git
- ```
- ```
- cd opencv
- ```
- ```
- mkdir release
- ```
- ```
- cd release
- ```
- 
- 
- ```sh
- cmake -D BUILD_TIFF=ON -D WITH_CUDA=OFF -D ENABLE_AVX=OFF -D WITH_OPENGL=OFF -D WITH_OPENCL=OFF -D WITH_IPP=OFF -D WITH_TBB=ON -D BUILD_TBB=ON 
- -D WITH_EIGEN=OFF   -D WITH_V4L=OFF -D WITH_VTK=OFF -D BUILD_TESTS=OFF -D BUILD_PERF_TESTS=OFF -D CMAKE_BUILD_TYPE=RELEASE 
- -D CMAKE_INSTALL_PREFIX=/usr/local -D    OPENCV_EXTRA_MODULES_PATH=/opt/opencv_contrib/modules /opt/opencv/
- ```
- ```
- make -j4
- ```
- ```
- make install
- ```
- ```
- ldconfig
- ```
- ```
- sudo apt install libopencv-dev
- ```
- check opencv path
- ```
- pkg-config --cflags opencv4
- ```
- check opencv libs
- ```
-  pkg-config --libs opencv4
- ```
- check opencv version
- ```
-  pkg-config --modversion opencv4
- ```
+ *keywords*
+```
+1. cv::dnn::Net
+2. cv::dnn::blobFromImage
+3. cv::Mat
+3. cv::rectangle
+4. cv::Point
+5. cv::Scalar
+6. cv::CommandLineParser
+7. cv::String
+8. cv::VideoCapture
+9. cv::waitKey
+10. cv::putText
+11. cv::imshow
+12. cv::imwrite
+13. cv::FONT_HERSHEY_SIMPLEX
+14. cv::LINE_AA
+```
+* c++ 
+[1/](https://stackoverflow.com/questions/6687107/difference-between-stdpair-and-stdtuple-with-only-two-members/)
+[2/](https://stackoverflow.com/questions/103512/why-use-static-castintx-instead-of-intx)
+[3/](https://stackoverflow.com/questions/43762651/how-does-stdtie-work/)
+[4/](https://www.geeksforgeeks.org/max_element-in-cpp/)
+
+```
+1. std::tuple vs std::pair;
+2. static_cast<int>(x) vs (int)x
+3. std::tie() vs auto[]
+4. std::distance
+5. std::max_element
+6. std::vector
+7. std::string
+```
 ### Installation
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/zoumson/Image.git
+   git clone https://github.com/zoumson/FindAgeGender.git
    ```
 2. Go to the project directory source
    ```sh
-   cd Image
+   cd FindAgeGender
    ```
-3. Create empty directories `build`, and `bin`
+3. Create empty directories 
    ```sh
-   mkdir build &&  mkdir bin 
+   mkdir build &&  mkdir bin && mkdir result && cd result && mkdir image && cd ..
    ```
-5. Generate the exectutable `imageBasics` and move it to `bin`
+5. Generate the exectutable and move it to `bin`
    ```sh
    cd build && cmake .. && make -j4 && cd ..
    ```
 
 <!-- USAGE EXAMPLES -->
 ### Usage
-1. Run for matrix usage 
-   ```sh
-   ./bin/imageBasics ./ressource/happy.jpeg
-   ```
-2. Output
-   ```sh
 
-   ```
+1. Run the executable 
+ ```sh
+   ./bin/demo -i=./resource/image/christiano.png -s=./result/image/output.png
+```
+2. Original Image
+
+![christiano](https://user-images.githubusercontent.com/38358621/123162160-db104880-d4a2-11eb-8c32-d1ba2a3119b2.png)
+
+3. Output image 
+![d](https://user-images.githubusercontent.com/38358621/123162190-e5324700-d4a2-11eb-9b61-316e6c7a17f5.png)
 
 4. Back to the initial file structure configuration
    ```sh
-   rm -r bin build 
+   rm -r bin build result 
    ```
 <!-- ROADMAP -->
 ## Roadmap
@@ -245,7 +228,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Adama Zouma - <!-- [@your_twitter](https://twitter.com/your_username) -->- stargue49@gmail.com
 
-Project Link: [https://github.com/zoumson/Image](https://github.com/zoumson/Image.git)
+Project Link: [https://github.com/zoumson/FindAgeGender](https://github.com/zoumson/FindAgeGender.git)
 
 
 

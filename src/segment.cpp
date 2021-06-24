@@ -5,13 +5,13 @@
 using namespace std;
 using namespace cv;
 
-Mat binarize(Mat input) 
+cv::Mat binarize(cv::Mat input) 
 {	
 	setenv("TESSDATA_PREFIX","/usr/share/tesseract-ocr/tessdata",1);
 	//Uses otsu to threshold the input image
-	Mat binaryImage;
-	cvtColor(input, input, COLOR_BGR2GRAY);
-	threshold(input, binaryImage, 0, 255, THRESH_OTSU);
+	cv::Mat binaryImage;
+	cv::cvtColor(input, input, COLOR_BGR2GRAY);
+	cv::threshold(input, binaryImage, 0, 255, THRESH_OTSU);
 
 	//Count the number of black and white pixels
 	int white = countNonZero(binaryImage);
@@ -21,10 +21,10 @@ Mat binarize(Mat input)
 	return white < black ? binaryImage : ~binaryImage;
 }
 
-vector<RotatedRect> findTextAreas(Mat input) {
+vector<RotatedRect> findTextAreas(cv::Mat input) {
 	//Dilate the image
 	auto kernel = getStructuringElement(MORPH_CROSS, Size(3,3));
-	Mat dilated;
+	cv::Mat dilated;
 	dilate(input, dilated, kernel, cv::Point(-1, -1), 5);
 
 	//Find all image contours
@@ -57,7 +57,7 @@ vector<RotatedRect> findTextAreas(Mat input) {
 	return areas;
 }
 
-Mat deskewAndCrop(Mat input, const RotatedRect& box)
+cv::Mat deskewAndCrop(cv::Mat input, const RotatedRect& box)
 {
 	double angle = box.angle;	
 	auto size = box.size;
@@ -71,11 +71,11 @@ Mat deskewAndCrop(Mat input, const RotatedRect& box)
 	
 	//Rotate the text according to the angle
 	auto transform = getRotationMatrix2D(box.center, angle, 1.0);
-	Mat rotated;
+	cv::Mat rotated;
 	warpAffine(input, rotated, transform, input.size(), INTER_CUBIC);
 
 	//Crop the result
-	Mat cropped;
+	cv::Mat cropped;
 	getRectSubPix(rotated, size, box.center, cropped);
 	copyMakeBorder(cropped,cropped,10,10,10,10,BORDER_CONSTANT,Scalar(0));
 	return cropped;
