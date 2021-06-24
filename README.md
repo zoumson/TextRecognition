@@ -138,13 +138,16 @@ git clone https://github.com/zoumson/OpencvInstall.git     \
 [10/](https://stackoverflow.com/questions/8449378/finding-contours-in-opencv/)
 [11/](https://stackoverflow.com/questions/8830619/difference-between-cv-retr-list-cv-retr-tree-cv-retr-external/)
 [12/](https://docs.opencv.org/3.4/db/dd6/classcv_1_1RotatedRect.html/)
+[15/](https://docs.opencv.org/3.4/db/dd6/classcv_1_1RotatedRect.html/)
 [13/](https://docs.opencv.org/3.4/d3/dc0/group__imgproc__shape.html#ga3d476a3417130ae5154aea421ca7ead9/)
+[17/](https://docs.opencv.org/3.4/d2/de8/group__core__array.html#gga209f2f4869e304c82d07739337eae7c5aed2e4346047e265c8c5a6d0276dcd838/)
+[18/](https://docs.opencv.org/3.4/dc/da3/tutorial_copyMakeBorder.html/)
 
 
 ```
 1. cv::cvtColor
 2. cv::threshold
-3. THRESH_OTSU
+3. cv::THRESH_OTSU
 4. cv::countNonZero
 5. cv::getStructuringElement
 6. cv::MORPH_CROSS
@@ -159,22 +162,9 @@ git clone https://github.com/zoumson/OpencvInstall.git     \
 15. cv::warpAffine
 16. cv::getRectSubPix
 17. cv::BORDER_CONSTANT
+18. cv::copyMakeBorder
 ```
-* c++ 
-[1/](https://stackoverflow.com/questions/6687107/difference-between-stdpair-and-stdtuple-with-only-two-members/)
-[2/](https://stackoverflow.com/questions/103512/why-use-static-castintx-instead-of-intx)
-[3/](https://stackoverflow.com/questions/43762651/how-does-stdtie-work/)
-[4/](https://www.geeksforgeeks.org/max_element-in-cpp/)
 
-```
-1. std::tuple vs std::pair;
-2. static_cast<int>(x) vs (int)x
-3. std::tie() vs auto[]
-4. std::distance
-5. std::max_element
-6. std::vector
-7. std::string
-```
 ### Installation
 
 1. Clone the repo
