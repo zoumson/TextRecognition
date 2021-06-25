@@ -174,9 +174,9 @@ git clone https://github.com/zoumson/OpencvInstall.git     \
 
 
 4. Back to the initial file structure configuration
-   ```sh
+ ```sh
 rm -r bin lib build result 
-   ```
+```
 <!-- ROADMAP -->
 ## Roadmap
 
