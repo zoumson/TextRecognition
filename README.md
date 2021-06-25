@@ -59,6 +59,9 @@ This project scanns an input image which is later processed for to identify pote
 
 * [opencv](https://opencv.org/)
 * [cmake](https://cmake.org/)
+* [tesseract](https://github.com/tesseract-ocr/tesseract/)
+* [leptonica](http://www.leptonica.org/)
+
 
 <br>
 
