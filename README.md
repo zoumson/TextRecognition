@@ -12,8 +12,8 @@
 [![Stack Overflow][stackoverflow-shield]][stackoverflow.com/users/11175375/adam]
 [![Leetcode][leetcode-shield]][eetcode.com/Hard_Code/]
 -->
-## Identify Gender and Age From Face Using DNN
-![d](https://user-images.githubusercontent.com/38358621/123162190-e5324700-d4a2-11eb-9b61-316e6c7a17f5.png)
+## Text Recognition using Tesseract 
+
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
@@ -52,12 +52,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
-Age and gender estimation based on face images plays an important role in a wide range of scenarios, including 
-* security and defense applications, 
-* * border control, 
-* human-machine interaction in ambient intelligence applications, and 
-* recognition based on soft biometric information
-In this project a pre-trained deep neural network model is used to first detect faces from a given image. The face detected is then used for gender and age estimation. 
+This project scanns an input image which is later processed for to identify potential text characters. 
 <!--Built with -->
 ### Built With
 
@@ -79,26 +74,7 @@ In this project a pre-trained deep neural network model is used to first detect 
 ### Entire Files Structure 
 
 ```
-.
-├── CMakeLists.txt
-├── README.md
-├── resource
-│   ├── image
-│   │   └── christiano.png
-│   ├── model
-│   │   ├── age_net.caffemodel
-│   │   ├── gender_net.caffemodel
-│   │   └── opencv_face_detector_uint8.pb
-│   ├── proto
-│   │   ├── age_deploy.prototxt
-│   │   ├── gender_deploy.prototxt
-│   │   └── opencv_face_detector.pbtxt
-│   └── video
-│       └── video.mp4
-└── src
-    └── demo.cpp
 
-6 directories, 11 files
 
 
 ```
@@ -107,7 +83,7 @@ In this project a pre-trained deep neural network model is used to first detect 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is a sample code of how you may use  the opencv dnn to detect face, gender and age.
+This is a sample code of how you may use  the opencv process input scanned image to detect text on it using tesseract.
 To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
@@ -169,11 +145,11 @@ git clone https://github.com/zoumson/OpencvInstall.git     \
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/zoumson/FindAgeGender.git
+   git clone https://github.com/zoumson/TextRecognition.git
    ```
 2. Go to the project directory source
    ```sh
-   cd FindAgeGender
+   cd TextRecognition
    ```
 3. Create empty directories 
    ```sh
@@ -189,18 +165,18 @@ git clone https://github.com/zoumson/OpencvInstall.git     \
 
 1. Run the executable 
  ```sh
-   ./bin/demo -i=./resource/image/christiano.png -s=./result/image/output.png
+./bin/demo -i=./resource/data/ticket.png
 ```
 2. Original Image
 
-![christiano](https://user-images.githubusercontent.com/38358621/123162160-db104880-d4a2-11eb-8c32-d1ba2a3119b2.png)
+
 
 3. Output image 
-![d](https://user-images.githubusercontent.com/38358621/123162190-e5324700-d4a2-11eb-9b61-316e6c7a17f5.png)
+
 
 4. Back to the initial file structure configuration
    ```sh
-   rm -r bin build result 
+rm -r bin lib build result 
    ```
 <!-- ROADMAP -->
 ## Roadmap
@@ -232,7 +208,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Adama Zouma - <!-- [@your_twitter](https://twitter.com/your_username) -->- stargue49@gmail.com
 
-Project Link: [https://github.com/zoumson/FindAgeGender](https://github.com/zoumson/FindAgeGender.git)
+Project Link: [https://github.com/zoumson/TextRecognition](https://github.com/zoumson/TextRecognition.git)
 
 
 
